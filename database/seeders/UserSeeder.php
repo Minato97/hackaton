@@ -16,7 +16,8 @@ class UserSeeder extends Seeder
         $data = [
             [
                 'username' => 'superusuario',
-                'password' => bcrypt('123456')
+                'password' => bcrypt('123456'),
+                'id_roles'=>1
             ],
 
         ];
