@@ -20,6 +20,7 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'username',
         'password',
+        'id_roles'
     ];
 
     /**
@@ -42,6 +43,15 @@ class User extends Authenticatable implements JWTSubject
         'password' => 'hashed',
     ];
 
+    public function roles(){
+        return $this->belongsTo(Rol::class,'id_roles');
+    }
+    public function pacientes(){
+        return $this->hasOne(Paciente::class,'id_users');
+    }
+    public function profesionistas(){
+        return $this->hasOne(Profesionista::class,'id_users');
+    }
     public function getJWTIdentifier()
     {
         return $this->getKey();
